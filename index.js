@@ -2,6 +2,7 @@ const express = require('express')
 const { urlencoded } = require('body-parser');
 const cors = require('cors');
 const { checkUserIsAuthorize } = require('./middleware');
+require('dotenv').config()
 const PORT = process.env.PORT || 3001;
 
 const app = express()
@@ -35,5 +36,5 @@ app.get('/', (req, res)=>{
 app.use('/login', require('./login'))
 app.use('/authorized', checkUserIsAuthorize, require('./authorized'))
 
-app.listen(PORT)
+app.listen(PORT, ()=>console.log('running on port ' + PORT ))
 
